@@ -1,0 +1,93 @@
+server:
+    port: 80
+spring:
+    freemarker:
+        template-loader-path:
+        - /templates/
+        - file:./templates/
+        cache: false
+        settings:
+            classic_compatible: true #处理空值
+            template_update_delay: 0
+            datetime_format: yyyy-MM-dd HH:mm
+            number_format: 0.##
+
+    datasource:
+            url: jdbc:mysql://rm-wz95um2ybywq4zo24.mysql.rds.aliyuncs.com:3306/platform_test?useSSL=false&characterEncoding=utf8
+            username: goldtop_platform
+            password: GoldGyro-Platform1
+    jpa:
+        database: mysql
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate.format_sql: true
+            hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            hibernate.cache.use_second_level_cache: false
+            hibernate.search.default.directory_provider: filesystem
+            hibernate.search.default.indexBase: ./indexes
+        open-in-view: true
+
+    servlet:
+        multipart:
+            max-file-size: 5MB
+
+    mail:
+        host: smtp.exmail.qq.com
+        username: example@mtons.com
+        password: {your password}
+        port: 25
+        properties:
+            mail.smtp.auth: true
+            mail.smtp.ssl.enable: true
+            mail.smtp.starttls.enable: true
+            mail.smtp.starttls.required: true
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 8080
+      password: aaa
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+      timeout: 0
+
+site.store.root: /data/goldgyro
+# 存储模式, 可选值 absolute / relative
+site.store.repo: relative
+
+# 是否开启资源域名
+site.store.domain: false
+
+# ---------------------------------
+# 资源域名, resource.domain = true 是有效
+# 配置域名, 将域名的根目录指向 store.root 配置的地址
+# ---------------------------------
+site.store.host: http://localhost:8080/goldgyro
+goldgyro:
+  normal: 0.0068
+  vip: 0.0058
+  agent: 0.0056
+  member: 0.0063
+  sameLevel: 0.0002
+  txnormal: 0.006
+  txvip: 0.0055
+  txagent: 0.0055
+  txmember: 0.0058
+enableSync: 1
+domainUrl: http://test.tuoluo718.com
+pay:
+  wechat:
+    WXAppID: wx6ba6c1cfaec6442b
+    MCH_ID: 1510959751
+    API_KEY: d79f797f29e04acd828ad7a02ad95b0a
+    WXAppSecret: cbd386f122bfbc06fc1d6be240eff19a
+  vipPrice: 0.02
+  memberPrice: 0.01
+managerUrl: http://test.tuoluo718.com:9090
+aliyun:
+  appcode: 0e78c491874740efa843baf17d660a7f
+expire: 30
